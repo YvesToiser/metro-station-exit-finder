@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">My App</string>
+    <string name="departure_spinner_hint_resource">Choisir Station de Départ</string>
+    <string name="arrival_spinner_hint_resource">Choisir Station d\'Arrivée</string>
 </resources>
