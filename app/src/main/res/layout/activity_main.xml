@@ -5,7 +5,7 @@
     android:id="@+id/full_page_layer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#052F6B"
+    android:background="#213341"
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -71,6 +71,8 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="5dp"
             android:background="@drawable/spinner_bar_red"
+            android:gravity="center"
+            android:textAlignment="center"
             android:prompt="@string/departure_spinner_hint_resource"
             android:spinnerMode="dialog"
             app:layout_constraintBottom_toTopOf="@+id/arrival_spinner"
@@ -90,6 +92,8 @@
             android:layout_marginBottom="10dp"
             android:background="@drawable/spinner_bar_red"
             android:spinnerMode="dialog"
+            android:gravity="center"
+            android:textAlignment="center"
             android:prompt="@string/arrival_spinner_hint_resource"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
