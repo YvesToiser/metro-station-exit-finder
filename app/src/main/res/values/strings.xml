@@ -2,4 +2,8 @@
     <string name="app_name">My App</string>
     <string name="departure_spinner_hint_resource">Choisir Station de Départ</string>
     <string name="arrival_spinner_hint_resource">Choisir Station d\'Arrivée</string>
+    <string name="DepartureToast">Départ :</string>
+    <string name="ArrivalToast">Arrivée :</string>
+    <string name="departureStationChoicePrompt">Choisir station de départ</string>
+    <string name="ArrivalStationChoicePrompt">Choisir station d\'arrivée</string>
 </resources>

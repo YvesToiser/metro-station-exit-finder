@@ -13,38 +13,18 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // Remove Title Bar
-        if(supportActionBar != null) {
-            supportActionBar?.hide()
-        }
+        hideActionBar(supportActionBar)
 
-        var selectedDepartureStation = ""
-        var selectedArrivalStation = ""
-
-        // Metro stations
-        val stationNamesDepartureA = arrayOf("Choisir station de départ", "Basso Cambo", "Bellefontaine", "Reynerie", "Mirail-Université", "Bagatelle", "Mermoz",
-            "Fontaine Lestang", "Arènes", "Mermoz", "Patte d'Oie", "Saint Cyprien République", "Esquirol", "Capitole",
-            "Jean Jaurès", "Marengo SNCF", "Jolimont", "Roseraie", "Argoulets", "Balma Grammont")
-
-        val stationNamesDepartureB = arrayOf("Choisir station de départ", "Ramonville", "Université Paul Sabatier", "Faculté de Pharmacie", "Rangueil",
-            "Saouzelong", "Saint-Agne SNCF", "Empalot", "Saint Michel Marcel Langer", "Palais de Justice", "Carmes",
-            "François Verdier", "Jean Jaurès", "Jeanne d'Arc", "Compans Caffarelli", "Canal du Midi",
-            "Minimes - Claude Nougaro", "Barrière de Paris", "La Vache", "Trois Cocus", "Borderouge")
-
-        val stationNamesArrivalA = arrayOf("Choisir station d'arrivée", "Basso Cambo", "Bellefontaine", "Reynerie", "Mirail-Université", "Bagatelle", "Mermoz",
-            "Fontaine Lestang", "Arènes", "Mermoz", "Patte d'Oie", "Saint Cyprien République", "Esquirol", "Capitole",
-            "Jean Jaurès", "Marengo SNCF", "Jolimont", "Roseraie", "Argoulets", "Balma Grammont")
-
-        val stationNamesArrivalB = arrayOf("Choisir station d'arrivée", "Ramonville", "Université Paul Sabatier", "Faculté de Pharmacie", "Rangueil",
-            "Saouzelong", "Saint-Agne SNCF", "Empalot", "Saint Michel Marcel Langer", "Palais de Justice", "Carmes",
-            "François Verdier", "Jean Jaurès", "Jeanne d'Arc", "Compans Caffarelli", "Canal du Midi",
-            "Minimes - Claude Nougaro", "Barrière de Paris", "La Vache", "Trois Cocus", "Borderouge")
         // Choose Metro Line Buttons
-
         // get reference to button
         val btnA = findViewById<ImageButton>(R.id.A_line_button)
         val btnB = findViewById<ImageButton>(R.id.B_line_button)
         val spinnerDeparture = findViewById<Spinner>(R.id.departure_spinner)
         val spinnerArrival = findViewById<Spinner>(R.id.arrival_spinner)
+        val imgLift = findViewById<ImageView>(R.id.imageViewLift)
+        val imgEscalator = findViewById<ImageView>(R.id.imageViewEscalator)
+        val imgStairs = findViewById<ImageView>(R.id.imageViewStairs)
+        val imgLine = findViewById<ImageView>(R.id.imageViewLine)
 
         // Initial state
         var selectedLine = MetroLineEnum.A
@@ -105,9 +85,11 @@ class MainActivity : AppCompatActivity() {
                 override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                     selectedDepartureStation = stationNamesDeparture[position]
                     if (position > 0) {
+                        processItemSelected(this@MainActivity, imgLift, imgEscalator, imgStairs,
+                            imgLine, selectedLine)
                         Toast.makeText(
                             this@MainActivity,
-                            "Départ : " + stationNamesDeparture[position],
+                            getString(R.string.DepartureToast) + stationNamesDeparture[position],
                             Toast.LENGTH_SHORT
                         ).show()
                     }
@@ -127,9 +109,11 @@ class MainActivity : AppCompatActivity() {
                 override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                     selectedArrivalStation = stationNamesArrival[position]
                     if (position > 0) {
+                        processItemSelected(this@MainActivity, imgLift, imgEscalator, imgStairs,
+                            imgLine, selectedLine)
                         Toast.makeText(
                             this@MainActivity,
-                            "Arrivée : " + stationNamesArrival[position],
+                            getString(R.string.ArrivalToast) + stationNamesArrival[position],
                             Toast.LENGTH_SHORT
                         ).show()
                     }
