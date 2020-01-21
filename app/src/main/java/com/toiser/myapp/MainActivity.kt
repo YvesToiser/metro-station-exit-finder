@@ -15,7 +15,6 @@ class MainActivity : AppCompatActivity() {
         // Remove Title Bar
         hideActionBar(supportActionBar)
 
-        // Choose Metro Line Buttons
         // get reference to button
         val btnA = findViewById<ImageButton>(R.id.A_line_button)
         val btnB = findViewById<ImageButton>(R.id.B_line_button)
@@ -25,106 +24,60 @@ class MainActivity : AppCompatActivity() {
         val imgEscalator = findViewById<ImageView>(R.id.imageViewEscalator)
         val imgStairs = findViewById<ImageView>(R.id.imageViewStairs)
         val imgLine = findViewById<ImageView>(R.id.imageViewLine)
+        val tvLift = findViewById<TextView>(R.id.tvLiftNumber)
+        val tvEscalator = findViewById<TextView>(R.id.tvEscalatorNumber)
+        val tvStairs = findViewById<TextView>(R.id.tvStairsNumber)
 
         // Initial state
-        var selectedLine = MetroLineEnum.A
-        var stationNamesDeparture = stationNamesDepartureA
-        var stationNamesArrival = stationNamesArrivalA
-        btnA.isEnabled = false
-        btnB.isEnabled = true
+        selectMetroLine(MetroLineEnum.A, btnA, btnB, spinnerDeparture, spinnerArrival, this)
 
         // set on-click listeners
         btnA.setOnClickListener {
-            btnA.isEnabled = false
-            btnB.isEnabled = true
-            selectedLine =  MetroLineEnum.A
-            stationNamesDeparture = stationNamesDepartureA
-            stationNamesArrival = stationNamesArrivalA
-            btnA.setImageResource(R.drawable.a_active)
-            btnB.setImageResource(R.drawable.b_inactive)
-            spinnerDeparture.setBackgroundResource(R.drawable.spinner_bar_red)
-            spinnerArrival.setBackgroundResource(R.drawable.spinner_bar_red)
-            // Spinners
-            if (spinnerDeparture != null) {
-                val arrayAdapterDeparture = ArrayAdapter(this, android.R.layout.simple_spinner_item, stationNamesDeparture)
-                spinnerDeparture.adapter = arrayAdapterDeparture
-            }
-            if (spinnerArrival != null) {
-                val arrayAdapterArrival = ArrayAdapter(this, android.R.layout.simple_spinner_item, stationNamesArrival)
-                spinnerArrival.adapter = arrayAdapterArrival
-            }
+            selectMetroLine(MetroLineEnum.A, btnA, btnB, spinnerDeparture, spinnerArrival, this)
         }
 
         btnB.setOnClickListener {
-            btnA.isEnabled = true
-            btnB.isEnabled = false
-            selectedLine =  MetroLineEnum.B
-            stationNamesDeparture = stationNamesDepartureB
-            stationNamesArrival = stationNamesArrivalB
-            btnA.setImageResource(R.drawable.a_inactive)
-            btnB.setImageResource(R.drawable.b_active)
-            spinnerDeparture.setBackgroundResource(R.drawable.spinner_bar_yellow)
-            spinnerArrival.setBackgroundResource(R.drawable.spinner_bar_yellow)
-            // Spinners
-            if (spinnerDeparture != null) {
-                val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, stationNamesDeparture)
-                spinnerDeparture.adapter = arrayAdapter
+            selectMetroLine(MetroLineEnum.B, btnA, btnB, spinnerDeparture, spinnerArrival, this)
+        }
+
+
+        spinnerDeparture.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                selectedDepartureStation = stationNamesDeparture[position]
+                if (position > 0) {
+                    processItemSelected( tvLift, tvEscalator, tvStairs, imgLift, imgEscalator, imgStairs,
+                        imgLine, selectedLine)
+                    Toast.makeText(
+                        this@MainActivity,
+                        getString(R.string.DepartureToast) + stationNamesDeparture[position],
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
-            if (spinnerArrival != null) {
-                val arrayAdapterArrival = ArrayAdapter(this, android.R.layout.simple_spinner_item, stationNamesArrival)
-                spinnerArrival.adapter = arrayAdapterArrival
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // Code to perform some action when nothing is selected
             }
         }
 
-        // Spinners
-        if (spinnerDeparture != null) {
-            val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, stationNamesDeparture)
-            spinnerDeparture.adapter = arrayAdapter
-
-            spinnerDeparture.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                    selectedDepartureStation = stationNamesDeparture[position]
-                    if (position > 0) {
-                        processItemSelected(this@MainActivity, imgLift, imgEscalator, imgStairs,
-                            imgLine, selectedLine)
-                        Toast.makeText(
-                            this@MainActivity,
-                            getString(R.string.DepartureToast) + stationNamesDeparture[position],
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                }
-
-                override fun onNothingSelected(parent: AdapterView<*>) {
-                    // Code to perform some action when nothing is selected
+        spinnerArrival.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                selectedArrivalStation = stationNamesArrival[position]
+                if (position > 0) {
+                    processItemSelected( tvLift, tvEscalator, tvStairs, imgLift, imgEscalator, imgStairs,
+                        imgLine, selectedLine)
+                    Toast.makeText(
+                        this@MainActivity,
+                        getString(R.string.ArrivalToast) + stationNamesArrival[position],
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
-        }
 
-        if (spinnerArrival != null) {
-            val arrayAdapterArrival = ArrayAdapter(this, android.R.layout.simple_spinner_item, stationNamesArrival)
-            spinnerArrival.adapter = arrayAdapterArrival
-
-            spinnerArrival.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                    selectedArrivalStation = stationNamesArrival[position]
-                    if (position > 0) {
-                        processItemSelected(this@MainActivity, imgLift, imgEscalator, imgStairs,
-                            imgLine, selectedLine)
-                        Toast.makeText(
-                            this@MainActivity,
-                            getString(R.string.ArrivalToast) + stationNamesArrival[position],
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                }
-
-                override fun onNothingSelected(parent: AdapterView<*>) {
-                    // Code to perform some action when nothing is selected
-                }
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // Code to perform some action when nothing is selected
             }
         }
-
 
     }
 }

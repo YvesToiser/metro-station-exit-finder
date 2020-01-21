@@ -138,7 +138,7 @@
                 app:srcCompat="@android:color/transparent" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/tvLiftNumber"
                 android:layout_width="250dp"
                 android:layout_height="match_parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -171,7 +171,7 @@
                 app:srcCompat="@android:color/transparent" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/tvEscalatorNumber"
                 android:layout_width="250dp"
                 android:layout_height="match_parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -204,7 +204,7 @@
                 app:srcCompat="@android:color/transparent" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/tvStairsNumber"
                 android:layout_width="250dp"
                 android:layout_height="match_parent"
                 app:layout_constraintEnd_toEndOf="parent"
