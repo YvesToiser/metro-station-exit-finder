@@ -133,14 +133,18 @@
                 android:layout_height="match_parent"
                 android:scaleType="fitCenter"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tvLiftNumber"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@android:color/transparent" />
 
             <TextView
                 android:id="@+id/tvLiftNumber"
-                android:layout_width="250dp"
+                android:layout_width="100dp"
                 android:layout_height="match_parent"
+                android:gravity="center"
+                android:textColor="#FFFFFF"
+                android:textSize="30sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageViewLift"
@@ -167,13 +171,17 @@
                 android:layout_width="70dp"
                 android:layout_height="match_parent"
                 android:scaleType="fitCenter"
+                app:layout_constraintEnd_toStartOf="@+id/tvEscalatorNumber"
                 app:layout_constraintStart_toStartOf="parent"
                 app:srcCompat="@android:color/transparent" />
 
             <TextView
                 android:id="@+id/tvEscalatorNumber"
-                android:layout_width="250dp"
+                android:layout_width="100dp"
                 android:layout_height="match_parent"
+                android:gravity="center"
+                android:textColor="#FFFFFF"
+                android:textSize="30sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageViewEscalator"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -200,13 +208,17 @@
                 android:layout_width="70dp"
                 android:layout_height="match_parent"
                 android:scaleType="fitCenter"
+                app:layout_constraintEnd_toStartOf="@+id/tvStairsNumber"
                 app:layout_constraintStart_toStartOf="parent"
                 app:srcCompat="@android:color/transparent" />
 
             <TextView
                 android:id="@+id/tvStairsNumber"
-                android:layout_width="250dp"
+                android:layout_width="100dp"
                 android:layout_height="match_parent"
+                android:gravity="center"
+                android:textColor="#FFFFFF"
+                android:textSize="30sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageViewStairs"
                 app:layout_constraintTop_toTopOf="parent" />

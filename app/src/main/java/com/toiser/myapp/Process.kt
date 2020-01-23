@@ -2,6 +2,7 @@ package com.toiser.myapp
 
 import android.content.Context
 import android.widget.*
+import com.toiser.myapp.MetroStationEnum.*
 
 fun selectMetroLine (metroLine: MetroLineEnum, btnA: ImageButton, btnB: ImageButton,
                      spinnerDeparture: Spinner, spinnerArrival: Spinner, context: Context) {
@@ -26,6 +27,7 @@ fun selectMetroLine (metroLine: MetroLineEnum, btnA: ImageButton, btnB: ImageBut
         spinnerDeparture.setBackgroundResource(R.drawable.spinner_bar_yellow)
         spinnerArrival.setBackgroundResource(R.drawable.spinner_bar_yellow)
     }
+    // TODO create new custom adapter to get station names and placeholders hints
     spinnerDeparture.adapter = ArrayAdapter(context, android.R.layout.simple_spinner_item, stationNamesDeparture)
     spinnerArrival.adapter = ArrayAdapter(context, android.R.layout.simple_spinner_item, stationNamesArrival)
 }
@@ -36,133 +38,130 @@ fun processItemSelected (tvLift: TextView, tvEscalator: TextView, tvStairs: Text
                          imgLine: ImageView, selectedLine: MetroLineEnum) {
 
     // If departure & arrival are selected
-    if ((selectedDepartureStation != null && selectedDepartureStation != MetroStationEnum.DEPART)
-        && (selectedArrivalStation != null && selectedArrivalStation != MetroStationEnum.ARRIVEE)) {
+    if ((selectedDepartureStation != null && selectedDepartureStation != DEPART)
+        && (selectedArrivalStation != null && selectedArrivalStation != ARRIVEE)) {
 
         //imgLine depending on departure station and way
         var metroLineId = 1
-        var liftNumber = 0
-        var escalatorNumber = 0
-        var stairNumber = 0
+        var liftNumber = ""
+        var escalatorNumber = ""
+        var stairNumber = ""
         if (selectedLine == MetroLineEnum.B){
             // Check which way
             if (selectedDepartureStation!!.ordinal < selectedArrivalStation!!.ordinal) {
                 metroLineId = when (selectedDepartureStation) {
 
-                    MetroStationEnum.SAINT_AGNE,
-                    MetroStationEnum.EMPALOT -> 13
+                    SAINT_AGNE,
+                    EMPALOT -> 13
 
-                    MetroStationEnum.RAMONVILLE,
-                    MetroStationEnum.UPS,
-                    MetroStationEnum.PHARMA,
-                    MetroStationEnum.SAOUZELONG,
-                    MetroStationEnum.SAINT_MICHEL,
-                    MetroStationEnum.PALAIS_JUSTICE,
-                    MetroStationEnum.CARMES,
-                    MetroStationEnum.VERDIER,
-                    MetroStationEnum.JJB,
-                    MetroStationEnum.JEANNE_DARC,
-                    MetroStationEnum.COMPANS,
-                    MetroStationEnum.CANAL_MIDI,
-                    MetroStationEnum.MINIMES,
-                    MetroStationEnum.BARRIERE_PARIS,
-                    MetroStationEnum.VACHE,
-                    MetroStationEnum.TROIS_COCUS -> 14
+                    RAMONVILLE,
+                    UPS,
+                    PHARMA,
+                    SAOUZELONG,
+                    SAINT_MICHEL,
+                    PALAIS_JUSTICE,
+                    CARMES,
+                    VERDIER,
+                    JJB,
+                    JEANNE_DARC,
+                    COMPANS,
+                    CANAL_MIDI,
+                    MINIMES,
+                    BARRIERE_PARIS,
+                    VACHE,
+                    TROIS_COCUS -> 14
 
-                    MetroStationEnum.RANGUEIL -> 15
+                    RANGUEIL -> 15
 
                     else -> 11
                 }
 
                 liftNumber = when (selectedArrivalStation) {
 
-                    MetroStationEnum.UPS,
-                    MetroStationEnum.SAINT_MICHEL,
-                    MetroStationEnum.PALAIS_JUSTICE,
-                    MetroStationEnum.JJB,
-                    MetroStationEnum.PHARMA -> 6
+                    UPS,
+                    SAINT_MICHEL,
+                    PALAIS_JUSTICE,
+                    JJB,
+                    PHARMA -> "6"
 
-                    MetroStationEnum.SAOUZELONG,
-                    MetroStationEnum.RANGUEIL,
-                    MetroStationEnum.SAINT_AGNE,
-                    MetroStationEnum.CARMES,
-                    MetroStationEnum.VERDIER,
-                    MetroStationEnum.JEANNE_DARC,
-                    MetroStationEnum.EMPALOT-> 1
+                    SAOUZELONG,
+                    RANGUEIL,
+                    SAINT_AGNE,
+                    CARMES,
+                    VERDIER,
+                    JEANNE_DARC,
+                    EMPALOT -> "1"
 
                     // Not yet implemented TODO Matt
-                    MetroStationEnum.COMPANS,
-                    MetroStationEnum.CANAL_MIDI,
-                    MetroStationEnum.MINIMES,
-                    MetroStationEnum.BARRIERE_PARIS,
-                    MetroStationEnum.VACHE,
-                    MetroStationEnum.TROIS_COCUS,
-                    MetroStationEnum.BORDEROUGE -> 0
-                    else -> 0
+                    COMPANS,
+                    CANAL_MIDI,
+                    MINIMES,
+                    BARRIERE_PARIS,
+                    VACHE,
+                    TROIS_COCUS,
+                    BORDEROUGE -> ""
+                    else -> ""
                 }
 
                 escalatorNumber = when (selectedArrivalStation) {
 
-                    MetroStationEnum.UPS,
-                    MetroStationEnum.SAINT_MICHEL,
-                    MetroStationEnum.PALAIS_JUSTICE,
-                    MetroStationEnum.PHARMA -> 1
+                    UPS,
+                    SAINT_MICHEL,
+                    PALAIS_JUSTICE,
+                    PHARMA -> "1"
 
-                    MetroStationEnum.SAINT_AGNE,
-                    MetroStationEnum.RANGUEIL -> 6
+                    SAINT_AGNE,
+                    RANGUEIL -> "6"
 
-                    MetroStationEnum.JEANNE_DARC,
-                    MetroStationEnum.VERDIER -> 2
+                    JEANNE_DARC,
+                    VERDIER -> "2"
 
-                    MetroStationEnum.JJB -> 4
+                    JJB -> "4"
 
-                    MetroStationEnum.CARMES,
-                    MetroStationEnum.SAOUZELONG,
-                    MetroStationEnum.EMPALOT-> 0
+                    CARMES,
+                    SAOUZELONG,
+                    EMPALOT -> "/"
 
 
                     // Not yet implemented TODO Matt
-                    MetroStationEnum.COMPANS,
-                    MetroStationEnum.CANAL_MIDI,
-                    MetroStationEnum.MINIMES,
-                    MetroStationEnum.BARRIERE_PARIS,
-                    MetroStationEnum.VACHE,
-                    MetroStationEnum.TROIS_COCUS,
-                    MetroStationEnum.BORDEROUGE -> 0
-                    else -> 0
+                    COMPANS,
+                    CANAL_MIDI,
+                    MINIMES,
+                    BARRIERE_PARIS,
+                    VACHE,
+                    TROIS_COCUS,
+                    BORDEROUGE -> ""
+                    else -> ""
                 }
 
                 stairNumber = when (selectedArrivalStation) {
 
-                    MetroStationEnum.SAINT_AGNE,
-                    MetroStationEnum.RANGUEIL -> 2
+                    SAINT_AGNE,
+                    RANGUEIL -> "2"
 
-                    MetroStationEnum.JJB -> 3
+                    JJB -> "3"
 
-                    MetroStationEnum.EMPALOT,
-                    MetroStationEnum.SAOUZELONG -> 4
+                    EMPALOT -> "1 - 4"
+                    CARMES -> "2 - 6"
+                    SAOUZELONG -> "4 - 6"
 
-                    MetroStationEnum.SAINT_MICHEL,
-                    MetroStationEnum.PALAIS_JUSTICE,
-                    MetroStationEnum.UPS,
-                    MetroStationEnum.JEANNE_DARC,
-                    MetroStationEnum.PHARMA -> 5
+                    SAINT_MICHEL,
+                    PALAIS_JUSTICE,
+                    UPS,
+                    JEANNE_DARC,
+                    PHARMA -> "5"
 
-                    MetroStationEnum.CARMES,
-                    MetroStationEnum.VERDIER -> 6
-
-
-                    //TODO saouzelong 4 ou 6 !!! Empalot 4 ou 1 Carmes 2 ou 6
+                    VERDIER -> "6"
 
                     // Not yet implemented TODO Matt
-                    MetroStationEnum.COMPANS,
-                    MetroStationEnum.CANAL_MIDI,
-                    MetroStationEnum.MINIMES,
-                    MetroStationEnum.BARRIERE_PARIS,
-                    MetroStationEnum.VACHE,
-                    MetroStationEnum.TROIS_COCUS,
-                    MetroStationEnum.BORDEROUGE -> 0
-                    else -> 0
+                    COMPANS,
+                    CANAL_MIDI,
+                    MINIMES,
+                    BARRIERE_PARIS,
+                    VACHE,
+                    TROIS_COCUS,
+                    BORDEROUGE -> ""
+                    else -> ""
                 }
 
             } else if (selectedDepartureStation!!.ordinal > selectedArrivalStation!!.ordinal){

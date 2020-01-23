@@ -22,9 +22,9 @@ fun displayMetroLine(imgLine: ImageView, metroLineId: Int) {
 }
 
 fun displayNumbers(tvLift: TextView, tvEscalator: TextView, tvStairs: TextView,
-                   liftNumber: Int, escalatorNumber: Int, stairNumber: Int) {
+                   liftNumber: String, escalatorNumber: String, stairNumber: String) {
 
-    tvLift.text = liftNumber.toString()
-    tvEscalator.text = escalatorNumber.toString()
-    tvStairs.text = stairNumber.toString()
+    tvLift.text = liftNumber
+    tvEscalator.text = escalatorNumber
+    tvStairs.text = stairNumber
 }
