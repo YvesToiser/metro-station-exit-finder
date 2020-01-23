@@ -40,7 +40,6 @@ class MainActivity : AppCompatActivity() {
             selectMetroLine(MetroLineEnum.B, btnA, btnB, spinnerDeparture, spinnerArrival, this)
         }
 
-
         spinnerDeparture.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 selectedDepartureStation = stationNamesDeparture[position]
@@ -49,7 +48,7 @@ class MainActivity : AppCompatActivity() {
                         imgLine, selectedLine)
                     Toast.makeText(
                         this@MainActivity,
-                        getString(R.string.DepartureToast) + stationNamesDeparture[position],
+                        getString(R.string.DepartureToast) + stationNamesDeparture[position].stationName,
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -68,7 +67,7 @@ class MainActivity : AppCompatActivity() {
                         imgLine, selectedLine)
                     Toast.makeText(
                         this@MainActivity,
-                        getString(R.string.ArrivalToast) + stationNamesArrival[position],
+                        getString(R.string.ArrivalToast) + stationNamesArrival[position].stationName,
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -78,6 +77,5 @@ class MainActivity : AppCompatActivity() {
                 // Code to perform some action when nothing is selected
             }
         }
-
     }
 }

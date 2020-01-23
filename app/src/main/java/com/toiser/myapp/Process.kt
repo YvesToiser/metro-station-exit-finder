@@ -27,9 +27,18 @@ fun selectMetroLine (metroLine: MetroLineEnum, btnA: ImageButton, btnB: ImageBut
         spinnerDeparture.setBackgroundResource(R.drawable.spinner_bar_yellow)
         spinnerArrival.setBackgroundResource(R.drawable.spinner_bar_yellow)
     }
-    // TODO create new custom adapter to get station names and placeholders hints
-    spinnerDeparture.adapter = ArrayAdapter(context, android.R.layout.simple_spinner_item, stationNamesDeparture)
-    spinnerArrival.adapter = ArrayAdapter(context, android.R.layout.simple_spinner_item, stationNamesArrival)
+
+    val departureStationsLabelList = arrayListOf<String>()
+    for (i in 0 until stationNamesDeparture.size) {
+        departureStationsLabelList.add(stationNamesDeparture[i].stationName)
+    }
+    spinnerDeparture.adapter = ArrayAdapter(context, android.R.layout.simple_spinner_item, departureStationsLabelList)
+
+    val arrivalStationsLabelList = arrayListOf<String>()
+    for (i in 0 until stationNamesArrival.size) {
+        arrivalStationsLabelList.add(stationNamesArrival[i].stationName)
+    }
+    spinnerArrival.adapter = ArrayAdapter(context, android.R.layout.simple_spinner_item, arrivalStationsLabelList)
 }
 
 
@@ -92,7 +101,7 @@ fun processItemSelected (tvLift: TextView, tvEscalator: TextView, tvStairs: Text
                     JEANNE_DARC,
                     EMPALOT -> "1"
 
-                    // Not yet implemented TODO Matt
+                    // TODO Matt
                     COMPANS,
                     CANAL_MIDI,
                     MINIMES,
@@ -123,7 +132,7 @@ fun processItemSelected (tvLift: TextView, tvEscalator: TextView, tvStairs: Text
                     EMPALOT -> "/"
 
 
-                    // Not yet implemented TODO Matt
+                    // TODO Matt
                     COMPANS,
                     CANAL_MIDI,
                     MINIMES,
@@ -153,7 +162,7 @@ fun processItemSelected (tvLift: TextView, tvEscalator: TextView, tvStairs: Text
 
                     VERDIER -> "6"
 
-                    // Not yet implemented TODO Matt
+                    // TODO Matt
                     COMPANS,
                     CANAL_MIDI,
                     MINIMES,
@@ -192,6 +201,5 @@ fun processItemSelected (tvLift: TextView, tvEscalator: TextView, tvStairs: Text
         displayNumbers(tvLift, tvEscalator, tvStairs, liftNumber, escalatorNumber, stairNumber)
 
     }
-
 
 }

@@ -3,7 +3,7 @@ package com.toiser.myapp
 import com.toiser.myapp.MetroStationEnum.*
 
 // Metro stations
-val stationNamesDepartureA = arrayOf(
+val stationNamesDepartureA = arrayListOf(
     DEPART,
     BASSO,
     BELLEFONTAINE,
@@ -24,7 +24,7 @@ val stationNamesDepartureA = arrayOf(
     ARGOULETS,
     BALMA)
 
-val stationNamesDepartureB = arrayOf(
+val stationNamesDepartureB = arrayListOf(
     DEPART,
     RAMONVILLE,
     UPS,
@@ -47,7 +47,7 @@ val stationNamesDepartureB = arrayOf(
     TROIS_COCUS,
     BORDEROUGE)
 
-val stationNamesArrivalA = arrayOf(
+val stationNamesArrivalA = arrayListOf(
     ARRIVEE,
     BASSO,
     BELLEFONTAINE,
@@ -68,7 +68,7 @@ val stationNamesArrivalA = arrayOf(
     ARGOULETS,
     BALMA)
 
-val stationNamesArrivalB = arrayOf(
+val stationNamesArrivalB = arrayListOf(
     ARRIVEE,
     RAMONVILLE,
     UPS,
