@@ -175,8 +175,6 @@ fun processItemSelected (tvLift: TextView, tvEscalator: TextView, tvStairs: Text
 
             } else if (selectedDepartureStation!!.ordinal > selectedArrivalStation!!.ordinal){
                 metroLineId = 11
-            } else {
-                // Do nothing
             }
 
         } else if (selectedLine == MetroLineEnum.A) {
@@ -184,11 +182,235 @@ fun processItemSelected (tvLift: TextView, tvEscalator: TextView, tvStairs: Text
             // do nothing yet
             // Check which way
             if (selectedDepartureStation!!.ordinal < selectedArrivalStation!!.ordinal) {
-                // Do nothing
+                // Basso -> Balma
+                metroLineId = when (selectedDepartureStation) {
+                    BASSO,
+                    BELLEFONTAINE,
+                    REYNERIE,
+                    MIRAIL,
+                    BAGATELLE,
+                    MERMOZ,
+                    FONTAINE_LESTANG,
+                    ARENES,
+                    PATTE_OIE,
+                    SAINT_CYP,
+                    MARENGO,
+                    JOLIMONT,
+                    ROSERAIE,
+                    ARGOULETS,
+                    BALMA -> 2
+
+                    ESQUIROL,
+                    CAPITOLE,
+                    JJA -> 1
+
+                    else -> 1
+                }
+                liftNumber = when (selectedArrivalStation) {
+                    MERMOZ,
+                    PATTE_OIE,
+                    ROSERAIE,
+                    ARGOULETS,
+                    BELLEFONTAINE -> "1"
+
+                    JJA -> "1 - 12"
+
+                    JOLIMONT -> "2"
+
+                    ESQUIROL -> "3"
+
+                    MIRAIL,
+                    ARENES,
+                    BALMA,
+                    BASSO -> "4"
+
+                    MARENGO -> "5"
+
+                    BAGATELLE -> "7"
+
+                    CAPITOLE,
+                    SAINT_CYP -> "8"
+
+                    FONTAINE_LESTANG,
+                    REYNERIE -> "9"
+
+                    else -> ""
+                }
+                escalatorNumber = when (selectedArrivalStation) {
+                    SAINT_CYP,
+                    ESQUIROL,
+                    CAPITOLE,
+                    MARENGO,
+                    ARENES -> "1"
+
+                    BALMA -> "8"
+
+                    PATTE_OIE -> "9"
+
+                    JJA -> "12"
+
+                    REYNERIE,
+                    MIRAIL,
+                    BAGATELLE,
+                    MERMOZ,
+                    FONTAINE_LESTANG,
+                    BELLEFONTAINE,
+                    ROSERAIE,
+                    ARGOULETS,
+                    JOLIMONT -> ""
+
+                    else -> ""
+                }
+                stairNumber = when (selectedArrivalStation) {
+                    JJA,
+                    ESQUIROL -> "1"
+
+                    ROSERAIE -> "1 - 7"
+
+                    CAPITOLE -> "2"
+
+                    BAGATELLE -> "2 - 7"
+
+                    ARGOULETS -> "3 - 4"
+
+                    BELLEFONTAINE -> "4"
+
+                    PATTE_OIE -> "5"
+
+                    MERMOZ -> "5 - 8"
+
+                    MIRAIL -> "5 - 9"
+
+                    ARENES,
+                    REYNERIE -> "6 - 12"
+
+                    MARENGO -> "7"
+
+                    JOLIMONT -> "7 - 12"
+
+                    SAINT_CYP -> "8"
+
+                    BALMA -> "10"
+
+                    FONTAINE_LESTANG -> "12"
+
+                    else -> ""
+                }
             } else if (selectedDepartureStation!!.ordinal > selectedArrivalStation!!.ordinal){
-                // Do nothing
-            } else {
-                // Do nothing
+                // Balma -> Basso
+                metroLineId = when (selectedDepartureStation) {
+                    BELLEFONTAINE,
+                    REYNERIE,
+                    MIRAIL,
+                    BAGATELLE,
+                    MERMOZ,
+                    FONTAINE_LESTANG,
+                    ARENES,
+                    PATTE_OIE,
+                    SAINT_CYP,
+                    MARENGO,
+                    JOLIMONT,
+                    ROSERAIE,
+                    ARGOULETS,
+                    BALMA -> 2
+
+                    ESQUIROL,
+                    CAPITOLE,
+                    JJA -> 1
+
+                    else -> 1
+                }
+                escalatorNumber = when (selectedArrivalStation) {
+                    ROSERAIE,
+                    MARENGO,
+                    FONTAINE_LESTANG,
+                    REYNERIE,
+                    ARGOULETS -> ""
+
+                    BAGATELLE,
+                    JJA -> "1"
+
+                    MIRAIL -> "3 - 8"
+
+                    PATTE_OIE -> "4"
+
+                    ESQUIROL,
+                    BELLEFONTAINE,
+                    BASSO,
+                    JOLIMONT -> "6"
+
+                    CAPITOLE -> "11"
+
+                    ARENES,
+                    SAINT_CYP -> "12"
+
+                    //TODO MATT MERMOZ
+
+                    else -> ""
+                }
+                stairNumber = when (selectedArrivalStation) {
+                    FONTAINE_LESTANG -> "1"
+
+                    JOLIMONT -> "1 - 6"
+
+                    REYNERIE,
+                    ARENES -> "1 - 7"
+
+                    SAINT_CYP -> "5"
+
+                    ESQUIROL -> "6"
+
+                    BAGATELLE -> "6 - 10"
+
+                    MARENGO -> "6 - 11"
+
+                    ROSERAIE,
+                    ARGOULETS -> "6 - 12"
+
+                    MIRAIL -> "7"
+
+                    PATTE_OIE -> "8"
+
+                    BELLEFONTAINE,
+                    BASSO -> "9"
+
+                    CAPITOLE,
+                    JJA -> "12"
+
+                    //TODO MATT MERMOZ
+
+                    else -> ""
+                }
+                liftNumber = when (selectedArrivalStation) {
+                    JJA -> "1 - 12"
+
+                    MIRAIL -> "3 - 8"
+
+                    FONTAINE_LESTANG,
+                    REYNERIE,
+                    ESQUIROL -> "4"
+
+                    SAINT_CYP -> "5"
+
+                    BAGATELLE,
+                    CAPITOLE -> "6"
+
+                    MARENGO -> " 8"
+
+                    ARENES -> "9"
+
+                    ARGOULETS -> "9 - 10"
+
+                    JOLIMONT -> "11"
+
+                    PATTE_OIE,
+                    BELLEFONTAINE,
+                    BASSO,
+                    ROSERAIE -> "12"
+
+                    //TODO MATT MERMOZ
+                    else -> ""
+                }
             }
         }
         // Display Metro line
