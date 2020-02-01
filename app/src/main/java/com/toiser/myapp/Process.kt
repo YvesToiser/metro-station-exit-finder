@@ -32,13 +32,13 @@ fun selectMetroLine (metroLine: MetroLineEnum, btnA: ImageButton, btnB: ImageBut
     for (i in 0 until stationNamesDeparture.size) {
         departureStationsLabelList.add(stationNamesDeparture[i].stationName)
     }
-    spinnerDeparture.adapter = ArrayAdapter(context, android.R.layout.simple_spinner_item, departureStationsLabelList)
+    spinnerDeparture.adapter = ArrayAdapter(context, R.layout.spinner_item, departureStationsLabelList)
 
     val arrivalStationsLabelList = arrayListOf<String>()
     for (i in 0 until stationNamesArrival.size) {
         arrivalStationsLabelList.add(stationNamesArrival[i].stationName)
     }
-    spinnerArrival.adapter = ArrayAdapter(context, android.R.layout.simple_spinner_item, arrivalStationsLabelList)
+    spinnerArrival.adapter = ArrayAdapter(context, R.layout.spinner_item, arrivalStationsLabelList)
 }
 
 

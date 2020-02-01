@@ -46,11 +46,6 @@ class MainActivity : AppCompatActivity() {
                 if (position > 0) {
                     processItemSelected( tvLift, tvEscalator, tvStairs, imgLift, imgEscalator, imgStairs,
                         imgLine, selectedLine)
-                    Toast.makeText(
-                        this@MainActivity,
-                        getString(R.string.DepartureToast) + stationNamesDeparture[position].stationName,
-                        Toast.LENGTH_SHORT
-                    ).show()
                 }
             }
 
@@ -65,11 +60,6 @@ class MainActivity : AppCompatActivity() {
                 if (position > 0) {
                     processItemSelected( tvLift, tvEscalator, tvStairs, imgLift, imgEscalator, imgStairs,
                         imgLine, selectedLine)
-                    Toast.makeText(
-                        this@MainActivity,
-                        getString(R.string.ArrivalToast) + stationNamesArrival[position].stationName,
-                        Toast.LENGTH_SHORT
-                    ).show()
                 }
             }
 
