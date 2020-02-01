@@ -339,12 +339,12 @@ fun processItemSelected (tvLift: TextView, tvEscalator: TextView, tvStairs: Text
                     BASSO,
                     JOLIMONT -> "6"
 
+                    MERMOZ -> "7"
+
                     CAPITOLE -> "11"
 
                     ARENES,
                     SAINT_CYP -> "12"
-
-                    //TODO MATT MERMOZ
 
                     else -> ""
                 }
@@ -356,6 +356,7 @@ fun processItemSelected (tvLift: TextView, tvEscalator: TextView, tvStairs: Text
                     REYNERIE,
                     ARENES -> "1 - 7"
 
+                    MERMOZ,
                     SAINT_CYP -> "5"
 
                     ESQUIROL -> "6"
@@ -376,8 +377,6 @@ fun processItemSelected (tvLift: TextView, tvEscalator: TextView, tvStairs: Text
 
                     CAPITOLE,
                     JJA -> "12"
-
-                    //TODO MATT MERMOZ
 
                     else -> ""
                 }
@@ -406,9 +405,9 @@ fun processItemSelected (tvLift: TextView, tvEscalator: TextView, tvStairs: Text
                     PATTE_OIE,
                     BELLEFONTAINE,
                     BASSO,
+                    MERMOZ,
                     ROSERAIE -> "12"
 
-                    //TODO MATT MERMOZ
                     else -> ""
                 }
             }
