@@ -58,6 +58,7 @@ fun processItemSelected (tvLift: TextView, tvEscalator: TextView, tvStairs: Text
         if (selectedLine == MetroLineEnum.B){
             // Check which way
             if (selectedDepartureStation!!.ordinal < selectedArrivalStation!!.ordinal) {
+                // Ramonville -> Borderouge
                 metroLineId = when (selectedDepartureStation) {
 
                     SAINT_AGNE,
@@ -91,6 +92,8 @@ fun processItemSelected (tvLift: TextView, tvEscalator: TextView, tvStairs: Text
                     SAINT_MICHEL,
                     PALAIS_JUSTICE,
                     JJB,
+                    MINIMES,
+                    VACHE,
                     PHARMA -> "6"
 
                     SAOUZELONG,
@@ -99,16 +102,15 @@ fun processItemSelected (tvLift: TextView, tvEscalator: TextView, tvStairs: Text
                     CARMES,
                     VERDIER,
                     JEANNE_DARC,
+                    BARRIERE_PARIS,
+                    TROIS_COCUS,
+                    BORDEROUGE,
                     EMPALOT -> "1"
 
                     // TODO Matt
-                    COMPANS,
-                    CANAL_MIDI,
-                    MINIMES,
-                    BARRIERE_PARIS,
-                    VACHE,
-                    TROIS_COCUS,
-                    BORDEROUGE -> ""
+                   // COMPANS,
+                   // CANAL_MIDI,
+
                     else -> ""
                 }
 
@@ -119,33 +121,38 @@ fun processItemSelected (tvLift: TextView, tvEscalator: TextView, tvStairs: Text
                     PALAIS_JUSTICE,
                     PHARMA -> "1"
 
-                    SAINT_AGNE,
-                    RANGUEIL -> "6"
-
                     JEANNE_DARC,
+                    VACHE,
                     VERDIER -> "2"
 
+                    BARRIERE_PARIS,
                     JJB -> "4"
+
+                    MINIMES,
+                    BORDEROUGE -> "5"
+
+                    TROIS_COCUS,
+                    SAINT_AGNE,
+                    RANGUEIL -> "6"
 
                     CARMES,
                     SAOUZELONG,
                     EMPALOT -> "/"
 
-
                     // TODO Matt
-                    COMPANS,
-                    CANAL_MIDI,
-                    MINIMES,
-                    BARRIERE_PARIS,
-                    VACHE,
-                    TROIS_COCUS,
-                    BORDEROUGE -> ""
+                   // COMPANS,
+                   // CANAL_MIDI,
+
                     else -> ""
                 }
 
                 stairNumber = when (selectedArrivalStation) {
 
+                    BORDEROUGE -> "1"
+
                     SAINT_AGNE,
+                    MINIMES,
+                    TROIS_COCUS,
                     RANGUEIL -> "2"
 
                     JJB -> "3"
@@ -158,23 +165,143 @@ fun processItemSelected (tvLift: TextView, tvEscalator: TextView, tvStairs: Text
                     PALAIS_JUSTICE,
                     UPS,
                     JEANNE_DARC,
+                    VACHE,
                     PHARMA -> "5"
 
+                    BARRIERE_PARIS,
                     VERDIER -> "6"
 
                     // TODO Matt
-                    COMPANS,
-                    CANAL_MIDI,
-                    MINIMES,
-                    BARRIERE_PARIS,
-                    VACHE,
-                    TROIS_COCUS,
-                    BORDEROUGE -> ""
+                 //   COMPANS,
+                 //   CANAL_MIDI,
+
                     else -> ""
                 }
 
             } else if (selectedDepartureStation!!.ordinal > selectedArrivalStation!!.ordinal){
-                metroLineId = 11
+                // Borderouge -> Ramonville
+                metroLineId = when (selectedDepartureStation) {
+
+                    VACHE,
+                    COMPANS,
+                    CANAL_MIDI,
+                    CARMES,
+                    VERDIER,
+                    JJB,
+                    SAINT_MICHEL,
+                    PALAIS_JUSTICE,
+                    UPS,
+                    PHARMA,
+                    SAOUZELONG,
+                    TROIS_COCUS -> 13
+
+                    BARRIERE_PARIS,
+                    MINIMES,
+                    JEANNE_DARC,
+                    SAINT_AGNE,
+                    EMPALOT,
+                    RAMONVILLE,
+                    BORDEROUGE -> 14
+
+                    RANGUEIL -> 15
+
+                    else -> 11
+                }
+
+                liftNumber = when (selectedArrivalStation) {
+
+                    PHARMA,
+                    SAINT_MICHEL,
+                    PALAIS_JUSTICE,
+                    JJB,
+                    MINIMES,
+                    VACHE,
+                    UPS -> "1"
+
+                    RAMONVILLE -> "1 - 6"
+
+                    COMPANS -> "2"
+
+                    SAINT_AGNE,
+                    SAOUZELONG,
+                    EMPALOT,
+                    CARMES,
+                    VERDIER,
+                    CANAL_MIDI,
+                    BARRIERE_PARIS,
+                    TROIS_COCUS,
+                    RANGUEIL -> "6"
+
+// TODO Matt
+                   // JEANNE_DARC,
+
+                    else -> ""
+                }
+
+                escalatorNumber = when (selectedArrivalStation) {
+
+                    SAINT_AGNE,
+                    RANGUEIL,
+                    TROIS_COCUS -> "1"
+
+                    RAMONVILLE -> "1 - 4"
+
+                    MINIMES -> "2"
+
+                    JJB,
+                    BARRIERE_PARIS -> "3"
+
+                    COMPANS,
+                    VERDIER,
+                    VACHE -> "5"
+
+                    SAINT_MICHEL,
+                    UPS,
+                    PHARMA,
+                    PALAIS_JUSTICE -> "6"
+
+                    CARMES,
+                    EMPALOT,
+                    SAOUZELONG,
+                    CANAL_MIDI -> "/"
+
+// TODO MATT
+                 //   JEANNE_DARC,
+
+                    else -> ""
+                }
+
+                stairNumber = when (selectedArrivalStation) {
+
+                    PHARMA -> "1 - 2"
+                    CANAL_MIDI,
+                    SAOUZELONG -> "1 - 3"
+                    RAMONVILLE -> "1 - 5"
+
+                    BARRIERE_PARIS,
+                    VERDIER -> "1"
+
+                    SAINT_MICHEL,
+                    PALAIS_JUSTICE,
+                    COMPANS,
+                    VACHE,
+                    UPS -> "2"
+
+                    EMPALOT -> "3"
+
+                    JJB -> "4"
+
+                    SAINT_AGNE,
+                    CARMES,
+                    MINIMES,
+                    TROIS_COCUS,
+                    RANGUEIL -> "5"
+
+// TODO Matt
+                   // JEANNE_DARC,
+
+                    else -> ""
+                }
             }
 
         } else if (selectedLine == MetroLineEnum.A) {
