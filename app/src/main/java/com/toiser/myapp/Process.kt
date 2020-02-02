@@ -88,14 +88,6 @@ fun processItemSelected (tvLift: TextView, tvEscalator: TextView, tvStairs: Text
 
                 liftNumber = when (selectedArrivalStation) {
 
-                    UPS,
-                    SAINT_MICHEL,
-                    PALAIS_JUSTICE,
-                    JJB,
-                    MINIMES,
-                    VACHE,
-                    PHARMA -> "6"
-
                     SAOUZELONG,
                     RANGUEIL,
                     SAINT_AGNE,
@@ -105,11 +97,18 @@ fun processItemSelected (tvLift: TextView, tvEscalator: TextView, tvStairs: Text
                     BARRIERE_PARIS,
                     TROIS_COCUS,
                     BORDEROUGE,
+                    CANAL_MIDI,
                     EMPALOT -> "1"
 
-                    // TODO Matt
-                   // COMPANS,
-                   // CANAL_MIDI,
+                    COMPANS -> "4"
+
+                    UPS,
+                    SAINT_MICHEL,
+                    PALAIS_JUSTICE,
+                    JJB,
+                    MINIMES,
+                    VACHE,
+                    PHARMA -> "6"
 
                     else -> ""
                 }
@@ -123,6 +122,7 @@ fun processItemSelected (tvLift: TextView, tvEscalator: TextView, tvStairs: Text
 
                     JEANNE_DARC,
                     VACHE,
+                    COMPANS,
                     VERDIER -> "2"
 
                     BARRIERE_PARIS,
@@ -137,11 +137,8 @@ fun processItemSelected (tvLift: TextView, tvEscalator: TextView, tvStairs: Text
 
                     CARMES,
                     SAOUZELONG,
-                    EMPALOT -> "/"
-
-                    // TODO Matt
-                   // COMPANS,
-                   // CANAL_MIDI,
+                    CANAL_MIDI,
+                    EMPALOT -> ""
 
                     else -> ""
                 }
@@ -158,7 +155,10 @@ fun processItemSelected (tvLift: TextView, tvEscalator: TextView, tvStairs: Text
                     JJB -> "3"
 
                     EMPALOT -> "1 - 4"
+
                     CARMES -> "2 - 6"
+
+                    CANAL_MIDI,
                     SAOUZELONG -> "4 - 6"
 
                     SAINT_MICHEL,
@@ -166,14 +166,11 @@ fun processItemSelected (tvLift: TextView, tvEscalator: TextView, tvStairs: Text
                     UPS,
                     JEANNE_DARC,
                     VACHE,
+                    COMPANS,
                     PHARMA -> "5"
 
                     BARRIERE_PARIS,
                     VERDIER -> "6"
-
-                    // TODO Matt
-                 //   COMPANS,
-                 //   CANAL_MIDI,
 
                     else -> ""
                 }
@@ -230,10 +227,8 @@ fun processItemSelected (tvLift: TextView, tvEscalator: TextView, tvStairs: Text
                     CANAL_MIDI,
                     BARRIERE_PARIS,
                     TROIS_COCUS,
+                    JEANNE_DARC,
                     RANGUEIL -> "6"
-
-// TODO Matt
-                   // JEANNE_DARC,
 
                     else -> ""
                 }
@@ -253,6 +248,7 @@ fun processItemSelected (tvLift: TextView, tvEscalator: TextView, tvStairs: Text
 
                     COMPANS,
                     VERDIER,
+                    JEANNE_DARC,
                     VACHE -> "5"
 
                     SAINT_MICHEL,
@@ -264,9 +260,6 @@ fun processItemSelected (tvLift: TextView, tvEscalator: TextView, tvStairs: Text
                     EMPALOT,
                     SAOUZELONG,
                     CANAL_MIDI -> "/"
-
-// TODO MATT
-                 //   JEANNE_DARC,
 
                     else -> ""
                 }
@@ -285,6 +278,7 @@ fun processItemSelected (tvLift: TextView, tvEscalator: TextView, tvStairs: Text
                     PALAIS_JUSTICE,
                     COMPANS,
                     VACHE,
+                    JEANNE_DARC,
                     UPS -> "2"
 
                     EMPALOT -> "3"
@@ -296,9 +290,6 @@ fun processItemSelected (tvLift: TextView, tvEscalator: TextView, tvStairs: Text
                     MINIMES,
                     TROIS_COCUS,
                     RANGUEIL -> "5"
-
-// TODO Matt
-                   // JEANNE_DARC,
 
                     else -> ""
                 }
