@@ -2,8 +2,8 @@ package com.toiser.myapp
 
 enum class MetroStationEnum (val stationName: String){
 
-    DEPART ("Départ"),
-    ARRIVEE ("Arrivée"),
+    DEPART ("Choisissez votre station de départ"),
+    ARRIVEE ("Choisissez votre station d’arrivée"),
 
     // Line A
     BASSO ("Basso Cambo"),
