@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 
 
 class MainActivity : AppCompatActivity() {
@@ -27,26 +28,36 @@ class MainActivity : AppCompatActivity() {
         val tvLift = findViewById<TextView>(R.id.tvLiftNumber)
         val tvEscalator = findViewById<TextView>(R.id.tvEscalatorNumber)
         val tvStairs = findViewById<TextView>(R.id.tvStairsNumber)
+        val layoutLift = findViewById<ConstraintLayout>(R.id.LayoutLift)
+        val layoutEscalator = findViewById<ConstraintLayout>(R.id.LayoutEscalator)
+        val layoutStairs = findViewById<ConstraintLayout>(R.id.LayoutStairs)
+        val textSchema = findViewById<TextView>(R.id.textSchema)
 
         // Initial state
-        selectMetroLine(MetroLineEnum.A, btnA, btnB, spinnerDeparture, spinnerArrival, this)
+        layoutLift.visibility = View.INVISIBLE
+        layoutEscalator.visibility = View.INVISIBLE
+        layoutStairs.visibility = View.INVISIBLE
+        imgLine.visibility = View.INVISIBLE
+        textSchema.visibility = View.INVISIBLE
+        selectMetroLine(imgLine, layoutLift, layoutEscalator, layoutStairs, MetroLineEnum.A, btnA, btnB,
+            spinnerDeparture, spinnerArrival, this)
 
         // set on-click listeners
         btnA.setOnClickListener {
-            selectMetroLine(MetroLineEnum.A, btnA, btnB, spinnerDeparture, spinnerArrival, this)
+            selectMetroLine(imgLine, layoutLift, layoutEscalator, layoutStairs, MetroLineEnum.A, btnA, btnB,
+                spinnerDeparture, spinnerArrival, this)
         }
 
         btnB.setOnClickListener {
-            selectMetroLine(MetroLineEnum.B, btnA, btnB, spinnerDeparture, spinnerArrival, this)
+            selectMetroLine(imgLine, layoutLift, layoutEscalator, layoutStairs, MetroLineEnum.B, btnA, btnB,
+                spinnerDeparture, spinnerArrival, this)
         }
 
         spinnerDeparture.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 selectedDepartureStation = stationNamesDeparture[position]
-                if (position > 0) {
-                    processItemSelected( tvLift, tvEscalator, tvStairs, imgLift, imgEscalator, imgStairs,
-                        imgLine, selectedLine)
-                }
+                processItemSelected(textSchema, layoutLift, layoutEscalator, layoutStairs, tvLift, tvEscalator,
+                        tvStairs, imgLift, imgEscalator, imgStairs, imgLine, selectedLine)
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
@@ -57,10 +68,8 @@ class MainActivity : AppCompatActivity() {
         spinnerArrival.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 selectedArrivalStation = stationNamesArrival[position]
-                if (position > 0) {
-                    processItemSelected( tvLift, tvEscalator, tvStairs, imgLift, imgEscalator, imgStairs,
-                        imgLine, selectedLine)
-                }
+                processItemSelected(textSchema, layoutLift, layoutEscalator, layoutStairs, tvLift, tvEscalator,
+                        tvStairs, imgLift, imgEscalator, imgStairs, imgLine, selectedLine)
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {

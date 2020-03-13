@@ -1,11 +1,19 @@
 package com.toiser.myapp
 
 import android.content.Context
+import android.view.View
 import android.widget.*
 import com.toiser.myapp.MetroStationEnum.*
 
-fun selectMetroLine (metroLine: MetroLineEnum, btnA: ImageButton, btnB: ImageButton,
+fun selectMetroLine (imgLine: ImageView, layoutLift: View, layoutEscalator: View, layoutStairs: View,
+                     metroLine: MetroLineEnum, btnA: ImageButton, btnB: ImageButton,
                      spinnerDeparture: Spinner, spinnerArrival: Spinner, context: Context) {
+
+    layoutLift.visibility = View.INVISIBLE
+    layoutEscalator.visibility = View.INVISIBLE
+    layoutStairs.visibility = View.INVISIBLE
+    imgLine.visibility = View.INVISIBLE
+
     if (metroLine == MetroLineEnum.A) {
         selectedLine = MetroLineEnum.A
         stationNamesDeparture = stationNamesDepartureA
@@ -42,13 +50,21 @@ fun selectMetroLine (metroLine: MetroLineEnum, btnA: ImageButton, btnB: ImageBut
 }
 
 
-fun processItemSelected (tvLift: TextView, tvEscalator: TextView, tvStairs: TextView,
-                         imgLift: ImageView, imgEscalator: ImageView, imgStairs: ImageView,
-                         imgLine: ImageView, selectedLine: MetroLineEnum) {
+fun processItemSelected (textSchema: TextView, layoutLift: View, layoutEscalator: View, layoutStairs: View, tvLift: TextView,
+                         tvEscalator: TextView, tvStairs: TextView, imgLift: ImageView,
+                         imgEscalator: ImageView, imgStairs: ImageView, imgLine: ImageView,
+                         selectedLine: MetroLineEnum) {
 
     // If departure & arrival are selected
     if ((selectedDepartureStation != null && selectedDepartureStation != DEPART)
-        && (selectedArrivalStation != null && selectedArrivalStation != ARRIVEE)) {
+        && (selectedArrivalStation != null && selectedArrivalStation != ARRIVEE)
+        && (selectedDepartureStation !=  selectedArrivalStation )) {
+
+        layoutLift.visibility = View.VISIBLE
+        layoutEscalator.visibility = View.VISIBLE
+        layoutStairs.visibility = View.VISIBLE
+        imgLine.visibility = View.VISIBLE
+        textSchema.visibility = View.VISIBLE
 
         //imgLine depending on departure station and way
         var metroLineId = 1
@@ -539,6 +555,13 @@ fun processItemSelected (tvLift: TextView, tvEscalator: TextView, tvStairs: Text
         // Display Numbers in front of items
         displayNumbers(tvLift, tvEscalator, tvStairs, liftNumber, escalatorNumber, stairNumber)
 
+    }
+    else {
+        layoutLift.visibility = View.INVISIBLE
+        layoutEscalator.visibility = View.INVISIBLE
+        layoutStairs.visibility = View.INVISIBLE
+        imgLine.visibility = View.INVISIBLE
+        textSchema.visibility = View.INVISIBLE
     }
 
 }

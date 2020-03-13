@@ -6,4 +6,8 @@
     <string name="ArrivalToast">Arrivée :</string>
     <string name="departureStationChoicePrompt">Choisir station de départ</string>
     <string name="ArrivalStationChoicePrompt">Choisir station d\'arrivée</string>
+    <string name="LiftTextDetail">Pour descendre près de l\'ascenseur, à votre départ, montez porte :</string>
+    <string name="StairsTextDetail">Pour descendre près de l\'escalier, à votre départ, montez porte :</string>
+    <string name="EscalatorTextDetail">Pour descendre près de l\'escalator, à votre départ, montez porte :</string>
+    <string name="schemaTextDetail">Aidez-vous du schéma de la rame pour trouver votre porte.</string>
 </resources>
