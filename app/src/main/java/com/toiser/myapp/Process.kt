@@ -50,7 +50,8 @@ fun selectMetroLine (imgLine: ImageView, layoutLift: View, layoutEscalator: View
 }
 
 
-fun processItemSelected (textSchema: TextView, layoutLift: View, layoutEscalator: View, layoutStairs: View, tvLift: TextView,
+fun processItemSelected (imageLogo: ImageView, textSchema: TextView, layoutLift: View,
+                         layoutEscalator: View, layoutStairs: View, tvLift: TextView,
                          tvEscalator: TextView, tvStairs: TextView, imgLift: ImageView,
                          imgEscalator: ImageView, imgStairs: ImageView, imgLine: ImageView,
                          selectedLine: MetroLineEnum) {
@@ -65,6 +66,7 @@ fun processItemSelected (textSchema: TextView, layoutLift: View, layoutEscalator
         layoutStairs.visibility = View.VISIBLE
         imgLine.visibility = View.VISIBLE
         textSchema.visibility = View.VISIBLE
+        imageLogo.visibility = View.INVISIBLE
 
         //imgLine depending on departure station and way
         var metroLineId = 1
@@ -126,7 +128,7 @@ fun processItemSelected (textSchema: TextView, layoutLift: View, layoutEscalator
                     VACHE,
                     PHARMA -> "6"
 
-                    else -> ""
+                    else -> "X"
                 }
 
                 escalatorNumber = when (selectedArrivalStation) {
@@ -154,9 +156,9 @@ fun processItemSelected (textSchema: TextView, layoutLift: View, layoutEscalator
                     CARMES,
                     SAOUZELONG,
                     CANAL_MIDI,
-                    EMPALOT -> ""
+                    EMPALOT -> "X"
 
-                    else -> ""
+                    else -> "X"
                 }
 
                 stairNumber = when (selectedArrivalStation) {
@@ -188,7 +190,7 @@ fun processItemSelected (textSchema: TextView, layoutLift: View, layoutEscalator
                     BARRIERE_PARIS,
                     VERDIER -> "6"
 
-                    else -> ""
+                    else -> "X"
                 }
 
             } else if (selectedDepartureStation!!.ordinal > selectedArrivalStation!!.ordinal){
@@ -246,7 +248,7 @@ fun processItemSelected (textSchema: TextView, layoutLift: View, layoutEscalator
                     JEANNE_DARC,
                     RANGUEIL -> "6"
 
-                    else -> ""
+                    else -> "X"
                 }
 
                 escalatorNumber = when (selectedArrivalStation) {
@@ -275,9 +277,9 @@ fun processItemSelected (textSchema: TextView, layoutLift: View, layoutEscalator
                     CARMES,
                     EMPALOT,
                     SAOUZELONG,
-                    CANAL_MIDI -> "/"
+                    CANAL_MIDI -> "X"
 
-                    else -> ""
+                    else -> "X"
                 }
 
                 stairNumber = when (selectedArrivalStation) {
@@ -307,7 +309,7 @@ fun processItemSelected (textSchema: TextView, layoutLift: View, layoutEscalator
                     TROIS_COCUS,
                     RANGUEIL -> "5"
 
-                    else -> ""
+                    else -> "X"
                 }
             }
 
@@ -368,7 +370,7 @@ fun processItemSelected (textSchema: TextView, layoutLift: View, layoutEscalator
                     FONTAINE_LESTANG,
                     REYNERIE -> "9"
 
-                    else -> ""
+                    else -> "X"
                 }
                 escalatorNumber = when (selectedArrivalStation) {
                     SAINT_CYP,
@@ -391,9 +393,9 @@ fun processItemSelected (textSchema: TextView, layoutLift: View, layoutEscalator
                     BELLEFONTAINE,
                     ROSERAIE,
                     ARGOULETS,
-                    JOLIMONT -> ""
+                    JOLIMONT -> "X"
 
-                    else -> ""
+                    else -> "X"
                 }
                 stairNumber = when (selectedArrivalStation) {
                     JJA,
@@ -428,7 +430,7 @@ fun processItemSelected (textSchema: TextView, layoutLift: View, layoutEscalator
 
                     FONTAINE_LESTANG -> "12"
 
-                    else -> ""
+                    else -> "X"
                 }
             } else if (selectedDepartureStation!!.ordinal > selectedArrivalStation!!.ordinal){
                 // Balma -> Basso
@@ -480,7 +482,7 @@ fun processItemSelected (textSchema: TextView, layoutLift: View, layoutEscalator
                     ARENES,
                     SAINT_CYP -> "12"
 
-                    else -> ""
+                    else -> "X"
                 }
                 stairNumber = when (selectedArrivalStation) {
                     FONTAINE_LESTANG -> "1"
@@ -512,7 +514,7 @@ fun processItemSelected (textSchema: TextView, layoutLift: View, layoutEscalator
                     CAPITOLE,
                     JJA -> "12"
 
-                    else -> ""
+                    else -> "X"
                 }
                 liftNumber = when (selectedArrivalStation) {
                     JJA -> "1 - 12"
@@ -542,7 +544,7 @@ fun processItemSelected (textSchema: TextView, layoutLift: View, layoutEscalator
                     MERMOZ,
                     ROSERAIE -> "12"
 
-                    else -> ""
+                    else -> "X"
                 }
             }
         }

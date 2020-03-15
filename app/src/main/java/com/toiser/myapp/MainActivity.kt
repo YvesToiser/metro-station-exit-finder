@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         val layoutEscalator = findViewById<ConstraintLayout>(R.id.LayoutEscalator)
         val layoutStairs = findViewById<ConstraintLayout>(R.id.LayoutStairs)
         val textSchema = findViewById<TextView>(R.id.textSchema)
+        val imageLogo = findViewById<ImageView>(R.id.ivLogo)
 
         // Initial state
         layoutLift.visibility = View.INVISIBLE
@@ -56,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         spinnerDeparture.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 selectedDepartureStation = stationNamesDeparture[position]
-                processItemSelected(textSchema, layoutLift, layoutEscalator, layoutStairs, tvLift, tvEscalator,
+                processItemSelected(imageLogo, textSchema, layoutLift, layoutEscalator, layoutStairs, tvLift, tvEscalator,
                         tvStairs, imgLift, imgEscalator, imgStairs, imgLine, selectedLine)
             }
 
@@ -68,7 +69,7 @@ class MainActivity : AppCompatActivity() {
         spinnerArrival.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 selectedArrivalStation = stationNamesArrival[position]
-                processItemSelected(textSchema, layoutLift, layoutEscalator, layoutStairs, tvLift, tvEscalator,
+                processItemSelected(imageLogo, textSchema, layoutLift, layoutEscalator, layoutStairs, tvLift, tvEscalator,
                         tvStairs, imgLift, imgEscalator, imgStairs, imgLine, selectedLine)
             }
 
