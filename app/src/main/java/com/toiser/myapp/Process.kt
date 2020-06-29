@@ -564,6 +564,7 @@ fun processItemSelected (imageLogo: ImageView, textSchema: TextView, layoutLift:
         layoutStairs.visibility = View.INVISIBLE
         imgLine.visibility = View.INVISIBLE
         textSchema.visibility = View.INVISIBLE
+        imageLogo.visibility = View.VISIBLE
     }
 
 }
