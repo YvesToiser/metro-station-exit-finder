@@ -22,8 +22,6 @@ fun selectMetroLine (imgLine: ImageView, layoutLift: View, layoutEscalator: View
         btnB.isEnabled = true
         btnA.setImageResource(R.drawable.a_active)
         btnB.setImageResource(R.drawable.b_inactive)
-        spinnerDeparture.setBackgroundResource(R.drawable.spinner_bar_red)
-        spinnerArrival.setBackgroundResource(R.drawable.spinner_bar_red)
     } else if (metroLine == MetroLineEnum.B) {
         selectedLine = MetroLineEnum.B
         stationNamesDeparture = stationNamesDepartureB
@@ -32,8 +30,6 @@ fun selectMetroLine (imgLine: ImageView, layoutLift: View, layoutEscalator: View
         btnB.isEnabled = false
         btnA.setImageResource(R.drawable.a_inactive)
         btnB.setImageResource(R.drawable.b_active)
-        spinnerDeparture.setBackgroundResource(R.drawable.spinner_bar_yellow)
-        spinnerArrival.setBackgroundResource(R.drawable.spinner_bar_yellow)
     }
 
     val departureStationsLabelList = arrayListOf<String>()
@@ -54,7 +50,28 @@ fun processItemSelected (imageLogo: ImageView, textSchema: TextView, layoutLift:
                          layoutEscalator: View, layoutStairs: View, tvLift: TextView,
                          tvEscalator: TextView, tvStairs: TextView, imgLift: ImageView,
                          imgEscalator: ImageView, imgStairs: ImageView, imgLine: ImageView,
-                         selectedLine: MetroLineEnum) {
+                         selectedLine: MetroLineEnum, spinnerDeparture: Spinner, spinnerArrival: Spinner) {
+
+    // If station is selected set colour, if not grey.
+    if (selectedDepartureStation == DEPART) {
+        spinnerDeparture.setBackgroundResource(R.drawable.spinner_bar_grey)
+    } else {
+        if (selectedLine === MetroLineEnum.A) {
+            spinnerDeparture.setBackgroundResource(R.drawable.spinner_bar_red)
+        } else if (selectedLine === MetroLineEnum.B) {
+            spinnerDeparture.setBackgroundResource(R.drawable.spinner_bar_yellow)
+        }
+    }
+
+    if (selectedArrivalStation == ARRIVEE) {
+        spinnerArrival.setBackgroundResource(R.drawable.spinner_bar_grey)
+    } else {
+        if (selectedLine === MetroLineEnum.A) {
+            spinnerArrival.setBackgroundResource(R.drawable.spinner_bar_red)
+        } else if (selectedLine === MetroLineEnum.B) {
+            spinnerArrival.setBackgroundResource(R.drawable.spinner_bar_yellow)
+        }
+    }
 
     // If departure & arrival are selected
     if ((selectedDepartureStation != null && selectedDepartureStation != DEPART)
