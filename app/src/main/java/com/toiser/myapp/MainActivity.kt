@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 selectedDepartureStation = stationNamesDeparture[position]
                 processItemSelected(imageLogo, textSchema, layoutLift, layoutEscalator, layoutStairs, tvLift, tvEscalator,
-                        tvStairs, imgLift, imgEscalator, imgStairs, imgLine, selectedLine)
+                        tvStairs, imgLift, imgEscalator, imgStairs, imgLine, selectedLine, spinnerDeparture, spinnerArrival)
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 selectedArrivalStation = stationNamesArrival[position]
                 processItemSelected(imageLogo, textSchema, layoutLift, layoutEscalator, layoutStairs, tvLift, tvEscalator,
-                        tvStairs, imgLift, imgEscalator, imgStairs, imgLine, selectedLine)
+                        tvStairs, imgLift, imgEscalator, imgStairs, imgLine, selectedLine, spinnerDeparture, spinnerArrival)
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
