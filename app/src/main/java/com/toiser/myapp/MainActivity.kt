@@ -1,5 +1,6 @@
 package com.toiser.myapp
 
+import android.app.PendingIntent.getActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         val layoutEscalator = findViewById<ConstraintLayout>(R.id.LayoutEscalator)
         val layoutStairs = findViewById<ConstraintLayout>(R.id.LayoutStairs)
         val textSchema = findViewById<TextView>(R.id.textSchema)
+        val errorBtn = findViewById<Button>(R.id.errorSignal)
         val imageLogo = findViewById<ImageView>(R.id.ivLogo)
 
         // Initial state
@@ -40,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         layoutStairs.visibility = View.INVISIBLE
         imgLine.visibility = View.INVISIBLE
         textSchema.visibility = View.INVISIBLE
+        errorBtn.visibility = View.INVISIBLE
         selectMetroLine(imgLine, layoutLift, layoutEscalator, layoutStairs, MetroLineEnum.A, btnA, btnB,
             spinnerDeparture, spinnerArrival, this)
 
@@ -54,11 +57,16 @@ class MainActivity : AppCompatActivity() {
                 spinnerDeparture, spinnerArrival, this)
         }
 
+        errorBtn.setOnClickListener{
+            Toast.makeText(this, getString(R.string.errorToastMessage), Toast.LENGTH_LONG).show()
+            // TODO send email with selected stations included
+        }
+
         spinnerDeparture.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 selectedDepartureStation = stationNamesDeparture[position]
                 processItemSelected(imageLogo, textSchema, layoutLift, layoutEscalator, layoutStairs, tvLift, tvEscalator,
-                        tvStairs, imgLift, imgEscalator, imgStairs, imgLine, selectedLine, spinnerDeparture, spinnerArrival)
+                        tvStairs, imgLift, imgEscalator, imgStairs, imgLine, selectedLine, spinnerDeparture, spinnerArrival, errorBtn)
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
@@ -70,7 +78,7 @@ class MainActivity : AppCompatActivity() {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 selectedArrivalStation = stationNamesArrival[position]
                 processItemSelected(imageLogo, textSchema, layoutLift, layoutEscalator, layoutStairs, tvLift, tvEscalator,
-                        tvStairs, imgLift, imgEscalator, imgStairs, imgLine, selectedLine, spinnerDeparture, spinnerArrival)
+                        tvStairs, imgLift, imgEscalator, imgStairs, imgLine, selectedLine, spinnerDeparture, spinnerArrival, errorBtn)
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {

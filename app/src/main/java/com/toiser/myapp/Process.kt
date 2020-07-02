@@ -50,7 +50,8 @@ fun processItemSelected (imageLogo: ImageView, textSchema: TextView, layoutLift:
                          layoutEscalator: View, layoutStairs: View, tvLift: TextView,
                          tvEscalator: TextView, tvStairs: TextView, imgLift: ImageView,
                          imgEscalator: ImageView, imgStairs: ImageView, imgLine: ImageView,
-                         selectedLine: MetroLineEnum, spinnerDeparture: Spinner, spinnerArrival: Spinner) {
+                         selectedLine: MetroLineEnum, spinnerDeparture: Spinner, spinnerArrival: Spinner,
+                         errorMessage: Button) {
 
     // If station is selected set colour, if not grey.
     if (selectedDepartureStation == DEPART) {
@@ -83,6 +84,7 @@ fun processItemSelected (imageLogo: ImageView, textSchema: TextView, layoutLift:
         layoutStairs.visibility = View.VISIBLE
         imgLine.visibility = View.VISIBLE
         textSchema.visibility = View.VISIBLE
+        errorMessage.visibility = View.VISIBLE
         imageLogo.visibility = View.INVISIBLE
 
         //imgLine depending on departure station and way
@@ -636,6 +638,7 @@ fun processItemSelected (imageLogo: ImageView, textSchema: TextView, layoutLift:
         layoutStairs.visibility = View.INVISIBLE
         imgLine.visibility = View.INVISIBLE
         textSchema.visibility = View.INVISIBLE
+        errorMessage.visibility = View.INVISIBLE
         imageLogo.visibility = View.VISIBLE
     }
 

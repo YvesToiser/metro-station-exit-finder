@@ -10,4 +10,6 @@
     <string name="StairsTextDetail">Pour descendre près de l\'escalier, à votre départ, montez porte :</string>
     <string name="EscalatorTextDetail">Pour descendre près de l\'escalator, à votre départ, montez porte :</string>
     <string name="schemaTextDetail">Aidez-vous du schéma pour trouver votre porte.</string>
+    <string name="error_signal">Signaler une erreur</string>
+    <string name="errorToastMessage">Merci de nous avoir signaler cette erreur. Nous allons procéder aux vérifications nécessaires.</string>
 </resources>
