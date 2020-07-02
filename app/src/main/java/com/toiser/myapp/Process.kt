@@ -90,6 +90,7 @@ fun processItemSelected (imageLogo: ImageView, textSchema: TextView, layoutLift:
         var liftNumber = ""
         var escalatorNumber = ""
         var stairNumber = ""
+        var descente = ""
         if (selectedLine == MetroLineEnum.B){
             // Check which way
             if (selectedDepartureStation!!.ordinal < selectedArrivalStation!!.ordinal) {
@@ -120,6 +121,8 @@ fun processItemSelected (imageLogo: ImageView, textSchema: TextView, layoutLift:
 
                     else -> 11
                 }
+
+                descente = "DROITE"
 
                 liftNumber = when (selectedArrivalStation) {
 
@@ -240,6 +243,8 @@ fun processItemSelected (imageLogo: ImageView, textSchema: TextView, layoutLift:
                     else -> 11
                 }
 
+                descente = "DROITE"
+
                 liftNumber = when (selectedArrivalStation) {
 
                     PHARMA,
@@ -359,6 +364,31 @@ fun processItemSelected (imageLogo: ImageView, textSchema: TextView, layoutLift:
 
                     else -> 1
                 }
+
+                descente = when (selectedArrivalStation) {
+                    BASSO,
+                    BELLEFONTAINE,
+                    REYNERIE,
+                    MIRAIL,
+                    BAGATELLE,
+                    MERMOZ,
+                    FONTAINE_LESTANG,
+                    ARENES,
+                    PATTE_OIE,
+                    SAINT_CYP,
+                    MARENGO,
+                    JOLIMONT,
+                    ROSERAIE,
+                    ARGOULETS,
+                    BALMA -> "DROITE"
+
+                    ESQUIROL,
+                    CAPITOLE,
+                    JJA -> "GAUCHE"
+
+                    else -> "DROITE"
+                }
+
                 liftNumber = when (selectedArrivalStation) {
                     MERMOZ,
                     PATTE_OIE,
@@ -473,6 +503,31 @@ fun processItemSelected (imageLogo: ImageView, textSchema: TextView, layoutLift:
 
                     else -> 1
                 }
+
+                descente = when (selectedArrivalStation) {
+                    BASSO,
+                    BELLEFONTAINE,
+                    REYNERIE,
+                    MIRAIL,
+                    BAGATELLE,
+                    MERMOZ,
+                    FONTAINE_LESTANG,
+                    ARENES,
+                    PATTE_OIE,
+                    SAINT_CYP,
+                    MARENGO,
+                    JOLIMONT,
+                    ROSERAIE,
+                    ARGOULETS,
+                    BALMA -> "DROITE"
+
+                    ESQUIROL,
+                    CAPITOLE,
+                    JJA -> "GAUCHE"
+
+                    else -> "DROITE"
+                }
+
                 escalatorNumber = when (selectedArrivalStation) {
                     ROSERAIE,
                     MARENGO,
