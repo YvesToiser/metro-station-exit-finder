@@ -1,12 +1,10 @@
 package com.toiser.myapp
 
-import android.app.PendingIntent.getActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         // Remove Title Bar
         hideActionBar(supportActionBar)
 
-        // get reference to button
+        // Bind all layouts items to variable.
         val btnA = findViewById<ImageButton>(R.id.A_line_button)
         val btnB = findViewById<ImageButton>(R.id.B_line_button)
         val spinnerDeparture = findViewById<Spinner>(R.id.departure_spinner)
@@ -36,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         val errorBtn = findViewById<Button>(R.id.errorSignal)
         val imageLogo = findViewById<ImageView>(R.id.ivLogo)
 
-        // Initial state
+        // Set the initial visibility state & line selection
         layoutLift.visibility = View.INVISIBLE
         layoutEscalator.visibility = View.INVISIBLE
         layoutStairs.visibility = View.INVISIBLE
@@ -62,6 +60,7 @@ class MainActivity : AppCompatActivity() {
             // TODO send email with selected stations included
         }
 
+        // Set a listener on the departure spinner and trigger the process function
         spinnerDeparture.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 selectedDepartureStation = stationNamesDeparture[position]
@@ -70,10 +69,11 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
-                // Code to perform some action when nothing is selected
+                // Code to perform some action when nothing is selected -> nothing
             }
         }
 
+        // Set a listener on the arrival spinner and trigger the process function
         spinnerArrival.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 selectedArrivalStation = stationNamesArrival[position]
@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
-                // Code to perform some action when nothing is selected
+                // Code to perform some action when nothing is selected -> nothing
             }
         }
     }

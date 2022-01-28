@@ -1,5 +1,6 @@
 package com.toiser.myapp
 
+// Enum of metro stations
 enum class MetroStationEnum (val stationName: String){
 
     DEPART ("Choisir la station de départ"),

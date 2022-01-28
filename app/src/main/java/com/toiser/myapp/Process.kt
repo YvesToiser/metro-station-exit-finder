@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.*
 import com.toiser.myapp.MetroStationEnum.*
 
+// What happen when the user select a metro line
 fun selectMetroLine (imgLine: ImageView, layoutLift: View, layoutEscalator: View, layoutStairs: View,
                      metroLine: MetroLineEnum, btnA: ImageButton, btnB: ImageButton,
                      spinnerDeparture: Spinner, spinnerArrival: Spinner, context: Context) {
@@ -45,7 +46,7 @@ fun selectMetroLine (imgLine: ImageView, layoutLift: View, layoutEscalator: View
     spinnerArrival.adapter = ArrayAdapter(context, R.layout.spinner_item, arrivalStationsLabelList)
 }
 
-
+// What happens when the user selects a station
 fun processItemSelected (imageLogo: ImageView, textSchema: TextView, layoutLift: View,
                          layoutEscalator: View, layoutStairs: View, tvLift: TextView,
                          tvEscalator: TextView, tvStairs: TextView, imgLift: ImageView,
@@ -92,7 +93,7 @@ fun processItemSelected (imageLogo: ImageView, textSchema: TextView, layoutLift:
         var liftNumber = ""
         var escalatorNumber = ""
         var stairNumber = ""
-        var descente = ""
+        var descente = ""  // This is not used yet but values are recorded already for eventual future use.
         if (selectedLine == MetroLineEnum.B){
             // Check which way
             if (selectedDepartureStation!!.ordinal < selectedArrivalStation!!.ordinal) {
@@ -633,6 +634,7 @@ fun processItemSelected (imageLogo: ImageView, textSchema: TextView, layoutLift:
 
     }
     else {
+        // if not both stations are selected do not display results
         layoutLift.visibility = View.INVISIBLE
         layoutEscalator.visibility = View.INVISIBLE
         layoutStairs.visibility = View.INVISIBLE
